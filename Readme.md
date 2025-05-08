@@ -35,3 +35,35 @@ Commands:
 *kubectl get pods -n 
 *kubectl get all <namespace>
 *kubectl exec -it  source-controller-6ff87cb475-ftdp5 -n flux-system -- sh(to check)
+
+
+
+weavegitops for flux UI
+------------------------
+Go to weavegitops.org
+-docs-->
+Step 1 - Install Weave GitOps Open Source
+------------------------------------------
+curl command:
+curl --silent --location "https://github.com/weaveworks/weave-gitops/releases/download/v0.38.0/gitops-$(uname)-$(uname -m).tar.gz" | tar xz -C /tmp
+sudo mv /tmp/gitops /usr/local/bin
+gitops version
+
+
+or 
+
+curl --location "https://github.com/weaveworks/weave-gitops/releases/download/v0.17.0/gitops-linux-x86_64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/gitops /usr/local/bin
+
+step2- Create dashboard for fluxui
+----------------------------------
+gitops create dashboard ww-gitops \
+  --password=$PASSWORD \
+
+step3-Get all resource in flux-system namespace
+-----------------------------------------------
+kubectl get all -n flux-system
+
+step4-Edit service part expose outside cluster
+----------------------------------------------
+kubectl edit svc -n flux-system <service-name>
