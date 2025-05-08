@@ -60,7 +60,7 @@ jobs:
         git config user.email "maheshgowdag29@gmail.com"
         git add mychart/values.yaml
         if ! git diff --cached --quiet; then
-          git commit -m "Update image tag to ${{ github.sha }}"
+          git commit -m "Update image tag"
           git push origin main
         else
           echo "No changes to commit"
