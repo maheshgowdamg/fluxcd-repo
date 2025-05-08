@@ -13,5 +13,5 @@ spec:
         kind: GitRepository
         name: gitrepository
         namespace: flux-system
-      reconcileStrategy: ChartVersion
+      reconcileStrategy: Revision
   
