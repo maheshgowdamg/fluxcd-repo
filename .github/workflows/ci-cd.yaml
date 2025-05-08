@@ -53,9 +53,15 @@ jobs:
     - name: Update Helm chart image tag
       run: |
         sed -i "s/tag: .*/tag: ${{ github.sha }}/" helm-repo/mychart/values.yaml
-        cd helm-repo
-        git config user.name "maheshgowdamg"
-        git config user.email "maheshgowdag29@gmail.com"
-        git add mychart/values.yaml
-        git commit -m "Update image tag to ${{ github.sha }}"
-        git push origin main
+        - name: Commit and push changes
+          cd helm-repo
+          git config user.name "maheshgowdamg"
+          git config user.email "maheshgowdag29@gmail.com"
+          git add mychart/values.yaml
+          if ! git diff --cached --quiet; then
+            git commit -m "Update image tag to ${{ github.sha }}"
+            git push origin main
+          else
+            echo "No changes to commit"
+          fi
+
