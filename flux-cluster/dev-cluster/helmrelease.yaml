@@ -14,17 +14,4 @@ spec:
         name: gitrepository
   interval: 10s
   targetNamespace: demo
-  values:
-    app:
-      image:
-        pullPolicy: Always
-        repository: maheshgowdamg25/springapp
-        tag: bec3a43ba6e3a98e1e35e2629a149176de05f211
-      labels:
-        app: myapp
-      name: springapp
-      port: 9000
-      service:
-        nodePort: 30090
-        type: NodePort
-    replicaCount: 4
+ 
