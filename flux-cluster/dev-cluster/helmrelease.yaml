@@ -1,19 +1,30 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: helmrelease
   namespace: flux-system
 spec:
-  interval: 10s
   chart:
     spec:
       chart: mychart
-      version: "0.1.0"
+      reconcileStrategy: ChartVersion
       sourceRef:
         kind: GitRepository
         name: gitrepository
-        namespace: flux-system
-      reconcileStrategy: Revision
+  interval: 10s
   targetNamespace: demo
-  valuesFiles:
-    - mychart/values.yaml
+  values:
+    app:
+      image:
+        pullPolicy: Always
+        repository: maheshgowdamg25/springapp
+        tag: bec3a43ba6e3a98e1e35e2629a149176de05f211
+      labels:
+        app: myapp
+      name: springapp
+      port: 9000
+      service:
+        nodePort: 30090
+        type: NodePort
+    replicaCount: 4
