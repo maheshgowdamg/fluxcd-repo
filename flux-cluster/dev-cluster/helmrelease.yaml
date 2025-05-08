@@ -14,5 +14,4 @@ spec:
         name: gitrepository
         namespace: flux-system
       reconcileStrategy: ChartVersion
-  valuesFiles:
-    - ./mychart/values.yaml
+  
