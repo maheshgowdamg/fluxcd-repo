@@ -12,6 +12,6 @@ spec:
       sourceRef:
         kind: GitRepository
         name: gitrepository
-        namespace: flux-system
+        namespace: dev
       reconcileStrategy: Revision
   
