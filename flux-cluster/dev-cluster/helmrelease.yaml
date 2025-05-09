@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: helmrelease
-  namespace: dev
+  namespace: flux-system
 spec:
   interval: 1m0s
   targetNamespace: demo
@@ -12,6 +12,6 @@ spec:
       sourceRef:
         kind: GitRepository
         name: gitrepository
-        namespace: dev
+        namespace: flux-system
       reconcileStrategy: Revision
   
