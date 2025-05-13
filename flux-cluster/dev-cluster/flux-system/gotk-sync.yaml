@@ -9,9 +9,8 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-  secretRef:
-    name: flux-system
-  url: ssh://git@github.com/maheshgowdamg/fluxcd-repo
+  secretRef: null
+  url: https://github.com/maheshgowdamg/fluxcd-repo.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
