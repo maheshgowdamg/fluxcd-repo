@@ -1,9 +1,8 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
-  namespace: flux-system
+  namespace: monitoring
 spec:
   chart:
     spec:
@@ -14,18 +13,12 @@ spec:
         name: prometheus-community
         namespace: flux-system
       version: 48.1.1
+  dependsOn:
+  - name: demo-helmrelease 
+    namespace: demo
   install:
     createNamespace: true
-  interval: 1h0m0s
+  interval: 1m0s
   targetNamespace: monitoring
-  values:
-    grafana:
-      adminPassword: admin@123
-    kubeStateMetrics:
-      enabled: true
-    prometheus:
-      prometheusSpec:
-        serviceMonitorSelector:
-          matchLabels:
-            release: prometheus
-        serviceMonitorSelectorNilUsesHelmValues: false
+  valuesFiles:
+  - values/kube-prometheus-stack-values.yaml
