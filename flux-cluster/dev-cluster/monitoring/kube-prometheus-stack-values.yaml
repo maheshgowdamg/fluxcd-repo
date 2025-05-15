@@ -1,0 +1,11 @@
+
+kubeStateMetrics:
+  enabled: true
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector:
+      matchLabels:
+        release: prometheus
+grafana:
+  adminPassword: "admin@123"
