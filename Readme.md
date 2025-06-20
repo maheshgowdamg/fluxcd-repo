@@ -7,6 +7,12 @@ flux bootstrap github \
 --private=false
 
 
+flux bootstrap github \
+  --owner=maheshgowdamg \
+  --repository=fluxcd-repo \
+  --path=flux-cluster/dev-cluster/flux-system \
+  --personal
+
 create the gitrepository for watch my helm chart repo
 ------------------------------------------------------------
 flux create source git gitrepository \
