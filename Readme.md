@@ -1,4 +1,5 @@
-Flux Bootstrap
+Flux Bootstrap                           
+----------------------
 flux bootstrap github \
 --owner=maheshgowdamg \
 --repository=fluxcd-repo \
